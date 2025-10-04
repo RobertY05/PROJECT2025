@@ -1,9 +1,12 @@
 extends Actor
 
-@export var speed := 300.0
-@export var dash_speed := 4000.0
-@export var dash_time := 1.5
-@export var dash_invulnerability_time = 0.3
+@export var speed := 200.0
+@export var dash_speed := 3000.0
+
+@export var max_poison := 130.0
+@export var poison_threshold := 100
+@export var poison_clear_per_tick := 3
+@export var poison_damage_per_tick := 5
 
 @export var dash_ghost : PackedScene
 
@@ -11,25 +14,31 @@ extends Actor
 @onready var dash_invulnerability_timer = $DashInvulnerabilityTimer
 @onready var dash_ghost_timer = $DashGhostTimer
 @onready var move_bounce_timer = $MoveBounceTimer
+@onready var invulnerability_timer = $InvulnerabilityTimer
 
 @onready var character_sprite = $CharacterSprite
+@onready var hurt_sprite = $UncannyCharacter
+
+@onready var hurt_sound = $HurtSound
+@onready var poison_sound = $PoisonSound
+
+var hurt_fade_speed = 0.01
 
 var original_scale : Vector2
 var move_bounce_percent = 0.8
 var lerp_percent = 0.2
 var moving = false
+var poison = 0.0
 
 func _ready():
 	health = 100.0
 	friendly = true
-	
-	dash_timer.wait_time = dash_time
-	dash_invulnerability_timer.wait_time = dash_invulnerability_time
 	original_scale = character_sprite.scale
 
 func _physics_process(_delta : float):
 	var acceleration = Vector2.ZERO
 	character_sprite.scale = lerp(character_sprite.scale, original_scale, lerp_percent)
+	hurt_sprite.modulate.a = max(0, hurt_sprite.modulate.a - hurt_fade_speed)
 	
 	var move_this_frame = false
 	if Input.is_action_pressed("move_up"):
@@ -68,6 +77,19 @@ func _physics_process(_delta : float):
 	
 	super(_delta)
 
+func hurt(amount : float, force : Vector2 = Vector2.ZERO) -> void:
+	velocity += force
+	health -= amount
+	hurt_sprite.modulate.a = 1.0
+	invulnerability_timer.start()
+	set_collision_layer_value(1, false)
+	hurt_sound.play()
+	if health <= 0:
+		die()
+
+func end_invulnerability():
+	set_collision_layer_value(1, true)
+
 func bounce():
 	character_sprite.scale.y = original_scale.y * 0.8
 	character_sprite.scale.x = original_scale.x / 0.8
@@ -80,3 +102,15 @@ func make_ghost():
 	var new_ghost = dash_ghost.instantiate()
 	new_ghost.global_position = global_position
 	get_tree().get_root().add_child(new_ghost)
+
+func apply_poison(amount):
+	poison = min(poison + amount, max_poison)
+
+func handle_poison():
+	if poison > poison_threshold:
+		health -= poison_damage_per_tick
+		hurt_sprite.modulate.a = 1.0
+		poison_sound.play()
+		if health <= 0:
+			die()
+	poison = max(0, poison - poison_clear_per_tick)

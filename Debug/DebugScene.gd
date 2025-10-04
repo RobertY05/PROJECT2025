@@ -13,3 +13,5 @@ func _ready():
 func _process(_delta : float):
 	if Input.is_action_just_pressed("z"):
 		boss.start()
+	if Input.is_action_just_pressed("x"):
+		OS.shell_open("https://godotengine.org")

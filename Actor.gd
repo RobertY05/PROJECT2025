@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var health : float
 @export var friendly := false
 @export var knockback_multiplier := 1.0
-@export var friction_multiplier := 0.4
+@export var friction_multiplier := 0.3
 
 func hurt(amount : float, force : Vector2 = Vector2.ZERO) -> void:
 	velocity += force

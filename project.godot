@@ -30,7 +30,8 @@ folder_colors={
 "res://Character/": "green",
 "res://Debug/": "pink",
 "res://Enemy/": "red",
-"res://Enemy/Boss1/": "orange"
+"res://Enemy/Boss1/": "orange",
+"res://Hud/": "blue"
 }
 
 [input]

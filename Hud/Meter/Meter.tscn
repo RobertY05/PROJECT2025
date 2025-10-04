@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2ocif4m1s2jh"]
+
+[ext_resource type="Script" uid="uid://bhbqs8crn1uxc" path="res://Hud/Meter/Meter.gd" id="1_kibsy"]
+[ext_resource type="Texture2D" uid="uid://b4a2wo2wscwk6" path="res://Hud/Meter/Resources/5GMeter.png" id="1_yoadx"]
+[ext_resource type="Texture2D" uid="uid://d1opfhip1y06o" path="res://Hud/Meter/Resources/Glow.png" id="3_8al55"]
+[ext_resource type="AudioStream" uid="uid://bk4ax5c5h0pg" path="res://Hud/Meter/Resources/GeigerCounter.mp3" id="4_irfxe"]
+[ext_resource type="AudioStream" uid="uid://4tb7kh3kyh25" path="res://Hud/Meter/Resources/Alarm.mp3" id="5_f2i4a"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_irfxe"]
+
+[node name="Meter" type="Node2D"]
+z_index = 10
+script = ExtResource("1_kibsy")
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="Flash" type="Sprite2D" parent="."]
+modulate = Color(1.9830973, 0.47400755, 0.39690074, 1)
+position = Vector2(-136, -210.99998)
+scale = Vector2(0.37623504, 0.36019942)
+texture = ExtResource("3_8al55")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-108.46874, -143.11218)
+scale = Vector2(0.15275337, 0.15059054)
+texture = ExtResource("1_yoadx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -164.0
+offset_top = -212.0
+offset_right = -105.0
+offset_bottom = -186.0
+theme_override_colors/font_color = Color(0.0013153356, 0.15585019, 0, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("ImageTexture_irfxe")
+
+[node name="Glow1" type="Sprite2D" parent="."]
+modulate = Color(0.54791594, 1.6704446, 1.1269045, 1)
+position = Vector2(-166, -243.00002)
+scale = Vector2(0.03263475, 0.030239513)
+texture = ExtResource("3_8al55")
+
+[node name="Glow2" type="Sprite2D" parent="."]
+modulate = Color(1.109246, 1.497256, 0.75572556, 1)
+position = Vector2(-150, -245.00002)
+scale = Vector2(0.03263475, 0.030239513)
+texture = ExtResource("3_8al55")
+
+[node name="Glow3" type="Sprite2D" parent="."]
+modulate = Color(2.224907, 2.1324885, 0.7564835, 1)
+position = Vector2(-134, -246)
+scale = Vector2(0.03263475, 0.030239513)
+texture = ExtResource("3_8al55")
+
+[node name="Glow4" type="Sprite2D" parent="."]
+modulate = Color(1.8019389, 1.168156, 0.54329985, 1)
+position = Vector2(-118, -244)
+scale = Vector2(0.03263475, 0.030239513)
+texture = ExtResource("3_8al55")
+
+[node name="Glow5" type="Sprite2D" parent="."]
+modulate = Color(1.9830973, 0.47400755, 0.39690074, 1)
+position = Vector2(-102, -241)
+scale = Vector2(0.03263475, 0.030239513)
+texture = ExtResource("3_8al55")
+
+[node name="MessageOnTimer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="MessageOffTimer" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+autostart = true
+
+[node name="GeigerSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_irfxe")
+autoplay = true
+parameters/looping = true
+
+[node name="AlarmSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_f2i4a")
+
+[connection signal="timeout" from="MessageOnTimer" to="." method="show_message"]
+[connection signal="timeout" from="MessageOffTimer" to="." method="hide_message"]
