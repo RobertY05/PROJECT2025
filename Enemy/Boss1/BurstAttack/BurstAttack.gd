@@ -19,5 +19,5 @@ func shoot():
 		new_vaccine.velocity = (GameManager.player.global_position - global_position).normalized() * new_vaccine.speed
 		get_tree().get_root().add_child(new_vaccine)
 	else:
-		boss_ref.next_attack()
+		finished()
 		queue_free()
