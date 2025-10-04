@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://xean0vwduva5"]
+
+[ext_resource type="Script" uid="uid://dcaeov02bttms" path="res://Enemy/Boss1/BurstAttack/BurstAttack.gd" id="1_4cjln"]
+[ext_resource type="PackedScene" uid="uid://kspf2ci1ftuo" path="res://Enemy/Boss1/BurstAttack/Vaccine.tscn" id="2_2n5l6"]
+
+[node name="BurstAttack" type="Node2D"]
+script = ExtResource("1_4cjln")
+vaccine = ExtResource("2_2n5l6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="shoot"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://kspf2ci1ftuo"]
+
+[ext_resource type="Script" uid="uid://dcqbl7nn2gp2b" path="res://Enemy/Boss1/BurstAttack/Vaccine.gd" id="1_wmy01"]
+[ext_resource type="Texture2D" uid="uid://dfm8q072djtey" path="res://Enemy/Boss1/BurstAttack/Vaccine.png" id="2_flhg6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmy01"]
+radius = 4.0
+height = 118.0
+
+[node name="Vaccine" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_wmy01")
+
+[node name="Vaccine" type="Sprite2D" parent="."]
+position = Vector2(-2.9100735, 0.83091545)
+rotation = 0.7504916
+scale = Vector2(0.16957293, 0.16481656)
+texture = ExtResource("2_flhg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wmy01")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

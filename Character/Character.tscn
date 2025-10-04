@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://4if2sla1iub8"]
+
+[ext_resource type="Script" uid="uid://cont3g07oxg46" path="res://Character/Character.gd" id="1_vx5l7"]
+[ext_resource type="Texture2D" uid="uid://bubfjity0wiuc" path="res://Character/Resources/main character.png" id="2_ptld2"]
+[ext_resource type="Texture2D" uid="uid://8btvee1hu171" path="res://Character/Resources/M16.png" id="3_vbi5m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vx5l7"]
+radius = 30.066593
+
+[node name="Character" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_vx5l7")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.48828128, 0.48828128)
+texture = ExtResource("2_ptld2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vx5l7")
+
+[node name="M16" type="Sprite2D" parent="."]
+position = Vector2(-14, 17)
+scale = Vector2(0.202824, 0.21034263)
+texture = ExtResource("3_vbi5m")

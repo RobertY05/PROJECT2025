@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://crvaer54kl5kv"]
+
+[ext_resource type="Script" uid="uid://7qvxo0lu8cjv" path="res://Debug/DebugScene.gd" id="1_4u8ob"]
+[ext_resource type="PackedScene" uid="uid://4if2sla1iub8" path="res://Character/Character.tscn" id="2_onjvy"]
+[ext_resource type="PackedScene" uid="uid://kuityyblvygu" path="res://Enemy/Boss1/Boss1.tscn" id="3_onjvy"]
+[ext_resource type="PackedScene" uid="uid://kspf2ci1ftuo" path="res://Enemy/Boss1/BurstAttack/Vaccine.tscn" id="4_wxg0p"]
+
+[node name="DebugScene" type="Node2D"]
+script = ExtResource("1_4u8ob")
+
+[node name="Enemy" parent="." instance=ExtResource("3_onjvy")]
+position = Vector2(-1, -211)
+
+[node name="Character" parent="." instance=ExtResource("2_onjvy")]
+position = Vector2(113, 122)
+health = 10.0
+
+[node name="Vaccine" parent="." instance=ExtResource("4_wxg0p")]
+position = Vector2(-348, 115)
+
+[node name="Camera2D" type="Camera2D" parent="."]

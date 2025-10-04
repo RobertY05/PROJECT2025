@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://kuityyblvygu"]
+
+[ext_resource type="Texture2D" uid="uid://dvsj2j1jrcpe" path="res://Debug/Frontman 1.png" id="1_3o4wt"]
+[ext_resource type="Script" uid="uid://cp4jpk74abguc" path="res://Enemy/Boss.gd" id="1_qotee"]
+[ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/BurstAttack/BurstAttack.tscn" id="2_lve07"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epr5s"]
+radius = 90.02222
+
+[node name="Enemy" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_qotee")
+attacks = Array[PackedScene]([ExtResource("2_lve07")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5258789e-05, 0)
+scale = Vector2(0.37524754, 0.3385214)
+texture = ExtResource("1_3o4wt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_epr5s")
