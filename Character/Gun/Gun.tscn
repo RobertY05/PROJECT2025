@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://bhrs3trnwx0ti"]
+
+[ext_resource type="Texture2D" uid="uid://8btvee1hu171" path="res://Character/Gun/Resources/M16.png" id="1_n45l5"]
+[ext_resource type="Script" uid="uid://cqlvxnunvod0s" path="res://Character/Gun/Gun.gd" id="1_oen5w"]
+[ext_resource type="PackedScene" uid="uid://duge71385qcty" path="res://Character/Gun/GunDecal.tscn" id="2_puiow"]
+[ext_resource type="Texture2D" uid="uid://ygyadwoxrck8" path="res://Character/Gun/Resources/M16Empty.png" id="2_xmn66"]
+[ext_resource type="AudioStream" uid="uid://ukbs7spp6hyh" path="res://Character/Gun/Resources/Gunshot.wav" id="4_3kewl"]
+[ext_resource type="AudioStream" uid="uid://co25cxq6hpx3g" path="res://Character/Gun/Resources/MagOut.wav" id="5_asesx"]
+[ext_resource type="AudioStream" uid="uid://m4dhdewsx1a0" path="res://Character/Gun/Resources/MagIn.wav" id="6_3b35i"]
+[ext_resource type="AudioStream" uid="uid://bbdo0wmaqx8om" path="res://Character/Gun/Resources/Rack.wav" id="7_8n7dp"]
+[ext_resource type="Texture2D" uid="uid://cfvih84wpx2vj" path="res://Character/Gun/Resources/MuzzleFlash1.png" id="8_8n7dp"]
+[ext_resource type="Texture2D" uid="uid://dqduiok1skby7" path="res://Character/Gun/Resources/MuzzleFlash2.png" id="9_cqk60"]
+[ext_resource type="Texture2D" uid="uid://d2bjudh1b4rdw" path="res://Character/Gun/Resources/MuzzleFlash3.png" id="10_uxtia"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_oen5w")
+decal = ExtResource("2_puiow")
+
+[node name="M16" type="Sprite2D" parent="."]
+position = Vector2(7.9999995, -2.1175824e-22)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_n45l5")
+flip_h = true
+
+[node name="M16Empty" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(7.9999995, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_xmn66")
+flip_h = true
+
+[node name="FireTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadMagInTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadRackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GunshotSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_3kewl")
+volume_db = -10.0
+max_polyphony = 50
+
+[node name="MagOutSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_asesx")
+volume_db = -5.0
+
+[node name="MagInSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3b35i")
+volume_db = -5.0
+
+[node name="RackSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8n7dp")
+volume_db = -5.0
+
+[node name="MuzzleFlashTimer" type="Timer" parent="."]
+wait_time = 0.07
+one_shot = true
+
+[node name="MuzzleFlash1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(89, -6)
+scale = Vector2(0.35526314, 0.3227848)
+texture = ExtResource("8_8n7dp")
+
+[node name="MuzzleFlash2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(90.000015, -7)
+scale = Vector2(0.6927711, 0.60169494)
+texture = ExtResource("9_cqk60")
+
+[node name="MuzzleFlash3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(95, -6)
+scale = Vector2(0.266, 0.34047616)
+texture = ExtResource("10_uxtia")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(96, 0)
+
+[connection signal="timeout" from="ReloadMagInTimer" to="." method="new_mag"]
+[connection signal="timeout" from="ReloadRackTimer" to="." method="rack_gun"]
+[connection signal="timeout" from="ReloadTimer" to="." method="finish_reload"]
+[connection signal="timeout" from="MuzzleFlashTimer" to="." method="hide_muzzle_flash"]

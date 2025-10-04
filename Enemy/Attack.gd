@@ -4,7 +4,7 @@ extends Node2D
 var hp_percent : float
 var boss_ref : Boss
 
-func setup(boss : Boss, hp_in : float):
+func setup(boss : Boss, hp_in : float) -> void:
 	hp_percent = hp_in
 	boss_ref = boss
 

@@ -12,6 +12,7 @@ script = ExtResource("1_4u8ob")
 [node name="Enemy" parent="." instance=ExtResource("3_onjvy")]
 position = Vector2(-1, -211)
 attacks = Array[PackedScene]([ExtResource("3_dnt51"), ExtResource("4_ehrph")])
+health = 1000.0
 
 [node name="Character" parent="." instance=ExtResource("2_onjvy")]
 position = Vector2(113, 122)

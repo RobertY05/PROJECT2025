@@ -3,7 +3,7 @@ extends Node
 var player : Actor
 var camera : Camera2D
 
-func get_screen_box():
+func get_screen_box() -> Rect2:
 	var result = camera.get_viewport_rect()
 	result.size.x *= 2
 	result.size.y *= 2

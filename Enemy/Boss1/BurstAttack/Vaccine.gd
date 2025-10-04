@@ -8,7 +8,6 @@ var velocity : Vector2
 
 func _physics_process(_delta : float):
 	global_position += velocity
-	print(global_position)
 	if not GameManager.get_screen_box().has_point(global_position):
 		queue_free()
 

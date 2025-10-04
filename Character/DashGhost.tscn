@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0t6xq87jagpg"]
+
+[ext_resource type="Texture2D" uid="uid://bubfjity0wiuc" path="res://Character/Resources/MainCharacter.png" id="1_36l4r"]
+[ext_resource type="Script" uid="uid://cbw3k7jno85ud" path="res://Character/DashGhost.gd" id="2_csv6o"]
+
+[node name="DashGhost" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.78431374)
+scale = Vector2(0.48828128, 0.48828128)
+texture = ExtResource("1_36l4r")
+script = ExtResource("2_csv6o")
