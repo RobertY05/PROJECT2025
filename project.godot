@@ -27,7 +27,7 @@ window/size/viewport_height=720
 [file_customization]
 
 folder_colors={
-"res://Character/": "yellow",
+"res://Character/": "green",
 "res://Debug/": "pink",
 "res://Enemy/": "red",
 "res://Enemy/Boss1/": "orange"

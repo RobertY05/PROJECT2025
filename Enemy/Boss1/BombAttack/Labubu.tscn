@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuponxypr7ooi"]
+
+[ext_resource type="Script" uid="uid://dfva82hiuu46f" path="res://Enemy/Boss1/BombAttack/labubu.gd" id="1_mcxw2"]
+[ext_resource type="Texture2D" uid="uid://ognp50tyv5us" path="res://Enemy/Boss1/BombAttack/labubu_PNG.png" id="2_2odq2"]
+[ext_resource type="Texture2D" uid="uid://c0gii0u8wm82x" path="res://Enemy/Boss1/BombAttack/warningsign.jpg" id="3_2odq2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6oll"]
+radius = 42.0
+height = 154.0
+
+[node name="Labubu" type="Area2D"]
+script = ExtResource("1_mcxw2")
+
+[node name="LabubuExplosion" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_2odq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_u6oll")
+
+[node name="WarningSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.15)
+texture = ExtResource("3_2odq2")
