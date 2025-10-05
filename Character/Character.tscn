@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://4if2sla1iub8"]
+[gd_scene load_steps=12 format=3 uid="uid://4if2sla1iub8"]
 
 [ext_resource type="Script" uid="uid://cont3g07oxg46" path="res://Character/Character.gd" id="1_vx5l7"]
 [ext_resource type="PackedScene" uid="uid://d0t6xq87jagpg" path="res://Character/DashGhost.tscn" id="2_aetg1"]
 [ext_resource type="Texture2D" uid="uid://bubfjity0wiuc" path="res://Character/Resources/MainCharacter.png" id="2_ptld2"]
+[ext_resource type="PackedScene" uid="uid://dqdqvrm0c82js" path="res://Explosion/Explosion.tscn" id="3_tofhs"]
 [ext_resource type="PackedScene" uid="uid://bhrs3trnwx0ti" path="res://Character/Gun/Gun.tscn" id="3_vbi5m"]
 [ext_resource type="Texture2D" uid="uid://bume5am730cxe" path="res://Character/Resources/UncannyCharacter.png" id="4_a8t6m"]
 [ext_resource type="AudioStream" uid="uid://dbg5ibbhkk6c4" path="res://Character/Resources/vine-boom.mp3" id="6_rh25e"]
 [ext_resource type="AudioStream" uid="uid://dqc7i0ue0jr3f" path="res://Character/Resources/minecraft_hit_soundmp3converter.mp3" id="7_0ljut"]
+[ext_resource type="AudioStream" uid="uid://o1awlopqmur8" path="res://Character/Resources/ReviveSound.wav" id="9_tofhs"]
+[ext_resource type="AudioStream" uid="uid://bnh0auw77h63x" path="res://Character/Resources/death_sound.mp3" id="9_xsea5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vx5l7"]
 radius = 30.066593
@@ -16,6 +19,7 @@ z_index = 1
 motion_mode = 1
 script = ExtResource("1_vx5l7")
 dash_ghost = ExtResource("2_aetg1")
+death_explosion = ExtResource("3_tofhs")
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 1.5
@@ -62,6 +66,13 @@ max_polyphony = 10
 [node name="PoisonTimer" type="Timer" parent="."]
 wait_time = 0.75
 autostart = true
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_xsea5")
+
+[node name="ReviveSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_tofhs")
+volume_db = -5.0
 
 [connection signal="timeout" from="DashInvulnerabilityTimer" to="." method="end_dash"]
 [connection signal="timeout" from="DashGhostTimer" to="." method="make_ghost"]

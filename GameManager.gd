@@ -2,6 +2,9 @@ extends Node
 
 var player : Actor
 var camera : Camera2D
+var boss : Boss
+
+var player_max_health = 100.0
 
 func get_screen_box() -> Rect2:
 	var result = camera.get_viewport_rect()

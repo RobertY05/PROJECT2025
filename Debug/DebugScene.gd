@@ -7,6 +7,7 @@ extends Node2D
 func _ready():
 	GameManager.player = player
 	GameManager.camera = camera
+	GameManager.boss = boss
 	
 	print(GameManager.get_screen_box())
 
@@ -15,3 +16,5 @@ func _process(_delta : float):
 		boss.start()
 	if Input.is_action_just_pressed("x"):
 		OS.shell_open("https://godotengine.org")
+	if Input.is_action_just_pressed("c"):
+		player.revive()

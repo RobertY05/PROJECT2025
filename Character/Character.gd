@@ -1,5 +1,7 @@
 extends Actor
 
+@export var max_health = 100.0
+
 @export var speed := 200.0
 @export var dash_speed := 3000.0
 
@@ -9,6 +11,7 @@ extends Actor
 @export var poison_damage_per_tick := 5
 
 @export var dash_ghost : PackedScene
+@export var death_explosion : PackedScene
 
 @onready var dash_timer = $DashTimer
 @onready var dash_invulnerability_timer = $DashInvulnerabilityTimer
@@ -21,6 +24,8 @@ extends Actor
 
 @onready var hurt_sound = $HurtSound
 @onready var poison_sound = $PoisonSound
+@onready var death_sound = $DeathSound
+@onready var revive_sound = $ReviveSound
 
 var hurt_fade_speed = 0.01
 
@@ -29,13 +34,18 @@ var move_bounce_percent = 0.8
 var lerp_percent = 0.2
 var moving = false
 var poison = 0.0
+var dead = false
 
 func _ready():
-	health = 100.0
+	health = max_health
 	friendly = true
 	original_scale = character_sprite.scale
 
 func _physics_process(_delta : float):
+	if dead:
+		poison = 0
+		return
+	
 	var acceleration = Vector2.ZERO
 	character_sprite.scale = lerp(character_sprite.scale, original_scale, lerp_percent)
 	hurt_sprite.modulate.a = max(0, hurt_sprite.modulate.a - hurt_fade_speed)
@@ -86,6 +96,28 @@ func hurt(amount : float, force : Vector2 = Vector2.ZERO) -> void:
 	hurt_sound.play()
 	if health <= 0:
 		die()
+
+func die():
+	dead = true
+	var explosion = death_explosion.instantiate()
+	explosion.global_position = global_position
+	hide()
+	get_tree().get_root().add_child(explosion)
+	set_collision_layer_value(1, false)
+	poison = 0
+	death_sound.play()
+	invulnerability_timer.stop()
+
+func revive():
+	dead = false
+	health = max_health
+	$Gun.magazine = $Gun.magazine_size
+	var explosion = death_explosion.instantiate()
+	explosion.global_position = global_position
+	show()
+	get_tree().get_root().add_child(explosion)
+	invulnerability_timer.start()
+	revive_sound.play()
 
 func end_invulnerability():
 	set_collision_layer_value(1, true)

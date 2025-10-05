@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://2ghc5dl2cl6o" path="res://Character/Gun/Resources/Spark2.png" id="3_gibh2"]
 
 [node name="GunDecal" type="Node2D"]
+z_index = 2
 script = ExtResource("1_xcnmd")
 
 [node name="Spark1" type="Sprite2D" parent="."]

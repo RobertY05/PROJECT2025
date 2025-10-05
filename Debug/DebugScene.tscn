@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crvaer54kl5kv"]
+[gd_scene load_steps=9 format=3 uid="uid://crvaer54kl5kv"]
 
 [ext_resource type="Script" uid="uid://7qvxo0lu8cjv" path="res://Debug/DebugScene.gd" id="1_4u8ob"]
 [ext_resource type="PackedScene" uid="uid://4if2sla1iub8" path="res://Character/Character.tscn" id="2_onjvy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://buvl2wdwluoml" path="res://Enemy/Boss1/BombAttack/BombAttack.tscn" id="4_ehrph"]
 [ext_resource type="PackedScene" uid="uid://byhdy4rfxj74" path="res://Debug/PoisonCircle.tscn" id="6_ehrph"]
 [ext_resource type="PackedScene" uid="uid://b2ocif4m1s2jh" path="res://Hud/Meter/Meter.tscn" id="7_6mx0e"]
+[ext_resource type="PackedScene" uid="uid://dn6s7io78vgok" path="res://Hud/HealthBar/PlayerHealthBar.tscn" id="8_4jmw6"]
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_4u8ob")
@@ -22,8 +23,10 @@ health = 10.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="PoisonCircle" parent="." instance=ExtResource("6_ehrph")]
-position = Vector2(-261, 29)
-
 [node name="Meter" parent="." instance=ExtResource("7_6mx0e")]
 position = Vector2(661, 375)
+
+[node name="HealthBar" parent="." instance=ExtResource("8_4jmw6")]
+
+[node name="PoisonCircle" parent="." instance=ExtResource("6_ehrph")]
+position = Vector2(-284, 183)

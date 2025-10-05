@@ -31,6 +31,7 @@ folder_colors={
 "res://Debug/": "pink",
 "res://Enemy/": "red",
 "res://Enemy/Boss1/": "orange",
+"res://Explosion/": "gray",
 "res://Hud/": "blue"
 }
 

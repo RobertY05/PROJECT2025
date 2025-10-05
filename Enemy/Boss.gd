@@ -1,6 +1,8 @@
 extends Actor
 class_name Boss
 
+@export var healthbar : PackedScene
+
 @export var attacks : Array[PackedScene]
 @export var attack_wait := 2.0
 var attack_index := attacks.size()
@@ -16,6 +18,10 @@ func start():
 	timer_ref.timeout.connect(attack_timer_timeout)
 	
 	timer_ref.start()
+	
+	var new_healthbar = healthbar.instantiate()
+	get_tree().get_root().add_child(new_healthbar)
+	new_healthbar.setup(self)
 
 func next_attack():
 	timer_ref.start()

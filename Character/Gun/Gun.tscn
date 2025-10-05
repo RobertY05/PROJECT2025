@@ -83,6 +83,7 @@ texture = ExtResource("10_uxtia")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 enabled = false
 target_position = Vector2(96, 0)
+collision_mask = 3
 
 [connection signal="timeout" from="ReloadMagInTimer" to="." method="new_mag"]
 [connection signal="timeout" from="ReloadRackTimer" to="." method="rack_gun"]

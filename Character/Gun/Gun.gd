@@ -41,12 +41,18 @@ var facing_right = true
 var original_position : Vector2
 
 func reload():
+	if GameManager.player.dead:
+		return
+	
 	eject_mag()
 	reload_mag_in_timer.start()
 	reload_rack_timer.start()
 	reload_timer.start()
 
 func eject_mag():
+	if GameManager.player.dead:
+		return
+	
 	mag_out_sound.play()
 	gun_empty_image.show()
 	gun_image.hide()
@@ -59,6 +65,9 @@ func eject_mag():
 	position += force.rotated(rotation)
 
 func new_mag():
+	if GameManager.player.dead:
+		return
+
 	mag_in_sound.play()
 	gun_empty_image.hide()
 	gun_image.show()
@@ -71,15 +80,24 @@ func new_mag():
 	position += force.rotated(rotation)
 
 func rack_gun():
+	if GameManager.player.dead:
+		return
+	
 	rack_sound.play()
 	
 	var force = Vector2(-reload_rack_force, 0)
 	position += force.rotated(rotation)
 
 func finish_reload():
+	if GameManager.player.dead:
+		return
+
 	magazine = magazine_size
 
 func shoot():
+	if GameManager.player.dead:
+		return
+	
 	gunshot_sound.play()
 	fire_timer.start()
 	
@@ -121,6 +139,9 @@ func _ready():
 	original_position = position
 
 func _process(_delta : float):
+	if GameManager.player.dead:
+		return
+	
 	if Input.is_action_pressed("shoot") and fire_timer.is_stopped() and reload_timer.is_stopped():
 		if magazine > 0:
 			shoot()
