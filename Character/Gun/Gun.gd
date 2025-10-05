@@ -19,6 +19,7 @@ extends Node2D
 @onready var mag_out_sound = $MagOutSound
 @onready var mag_in_sound = $MagInSound
 @onready var rack_sound = $RackSound
+@onready var hit_sound = $HitSound
 
 @onready var gun_image = $M16
 @onready var gun_empty_image = $M16Empty
@@ -112,6 +113,8 @@ func shoot():
 		var new_decal = decal.instantiate()
 		new_decal.global_position = raycast.get_collision_point()
 		get_tree().get_root().add_child(new_decal)
+		hit_sound.pitch_scale = randf_range(0.8, 1.2)
+		hit_sound.play()
 		if raycast.get_collider() is Actor:
 			var actor : Actor = raycast.get_collider()
 			actor.hurt(damage, (actor.global_position - global_position).normalized() * knockback)

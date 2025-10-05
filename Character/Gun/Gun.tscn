@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhrs3trnwx0ti"]
+[gd_scene load_steps=13 format=3 uid="uid://bhrs3trnwx0ti"]
 
 [ext_resource type="Texture2D" uid="uid://8btvee1hu171" path="res://Character/Gun/Resources/M16.png" id="1_n45l5"]
 [ext_resource type="Script" uid="uid://cqlvxnunvod0s" path="res://Character/Gun/Gun.gd" id="1_oen5w"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cfvih84wpx2vj" path="res://Character/Gun/Resources/MuzzleFlash1.png" id="8_8n7dp"]
 [ext_resource type="Texture2D" uid="uid://dqduiok1skby7" path="res://Character/Gun/Resources/MuzzleFlash2.png" id="9_cqk60"]
 [ext_resource type="Texture2D" uid="uid://d2bjudh1b4rdw" path="res://Character/Gun/Resources/MuzzleFlash3.png" id="10_uxtia"]
+[ext_resource type="AudioStream" uid="uid://gewe53holtq7" path="res://Character/Gun/Resources/MetalHit.mp3" id="12_3y174"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_oen5w")
@@ -84,6 +85,9 @@ texture = ExtResource("10_uxtia")
 enabled = false
 target_position = Vector2(96, 0)
 collision_mask = 3
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_3y174")
 
 [connection signal="timeout" from="ReloadMagInTimer" to="." method="new_mag"]
 [connection signal="timeout" from="ReloadRackTimer" to="." method="rack_gun"]
