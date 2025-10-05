@@ -26,6 +26,8 @@ var satellite_original_position : Vector2
 @onready var chain_gun_r_shoot_point = $CenterLimb/ChainGunR/ChainGunRShootPoint
 @onready var radar_shoot_point = $RadarLimb/RadarDish/RadarShootPoint
 @onready var satellite_shoot_point = $SatelliteLimb/Satellite/SatelliteShootPoint
+@onready var eye_l_shoot_point = $CenterLimb/EyeLShootPoint
+@onready var eye_r_shoot_point = $CenterLimb/EyeRShootPoint
 
 func shoot_chain_gun_l():
 	muzzle_flash_l.show()

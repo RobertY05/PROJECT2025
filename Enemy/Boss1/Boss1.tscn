@@ -175,5 +175,11 @@ texture = ExtResource("5_2j3c3")
 position = Vector2(4, 1)
 shape = SubResource("CircleShape2D_epr5s")
 
+[node name="EyeLShootPoint" type="Marker2D" parent="CenterLimb"]
+position = Vector2(-24, -1)
+
+[node name="EyeRShootPoint" type="Marker2D" parent="CenterLimb"]
+position = Vector2(30, -2)
+
 [connection signal="timeout" from="CenterLimb/ChainGunL/MuzzleFlashLTimer" to="." method="hide_muzzle_flash_l"]
 [connection signal="timeout" from="CenterLimb/ChainGunR/MuzzleFlashRTimer" to="." method="hide_muzzle_flash_r"]
