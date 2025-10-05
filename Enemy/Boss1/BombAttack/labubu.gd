@@ -3,7 +3,7 @@ extends Area2D
 #Editable Stats and stuff
 @export var damage := 20.0
 @export var knockback := 200.0
-@export var fuse_time := 2
+@export var fuse_time := 1
 @export var explosion_duration := 0.5
 
 #Important Variables for display

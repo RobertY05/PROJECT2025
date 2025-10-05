@@ -4,7 +4,7 @@ extends Attack
 @export var Labubu : PackedScene
 @export var bombs = 6
 @export var waves = 3
-@export var fire_cooldown = 2.25
+@export var fire_cooldown = 1.25
 
 #The timer node
 @onready var timer = $Timer
