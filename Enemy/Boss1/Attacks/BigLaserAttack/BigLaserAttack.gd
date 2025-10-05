@@ -1,7 +1,8 @@
 extends Attack
 
 @export var laser_scene : PackedScene
-@export var charge_time := 2.5       
+@export var charge_time := 2.5  
+@export var firing_time := 2       
 @export var max_scale := Vector2(0.25, 0.25)
 @export var satellite_offset := Vector2(10, 5)   
 @export var warning_length := 2000                   
@@ -66,9 +67,6 @@ func _ready():
 	# Fire the big laser
 	await fire()
 
-	# Remove warning strip
-	warning_strip.queue_free()
-
 	finished()
 	queue_free()
 
@@ -83,11 +81,14 @@ func radar_look_at(point: Vector2):
 
 
 func fire():
-
+	# Remove warning strip
+	warning_strip.queue_free()
+	
 	# Hide charge effects, stop charge sound, play shoot sound
 	charge_glow.hide()
 	charge_sound.stop()
 	shoot_sound.play()
+
 
 	# Instantiate the laser
 	var laser = laser_scene.instantiate() as Area2D
@@ -100,3 +101,4 @@ func fire():
 
 	# Laser rotation fixed — facing last dish rotation
 	laser.global_rotation = satellite_shoot_point.get_parent().global_rotation
+	await get_tree().create_timer(firing_time).timeout

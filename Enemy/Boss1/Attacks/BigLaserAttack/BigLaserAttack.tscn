@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://qmpjshcuqite" path="res://Enemy/Boss1/Attacks/OverwatchAttack/Resources/Charge.mp3" id="1_n8tty"]
 [ext_resource type="PackedScene" uid="uid://dgibcff21uud8" path="res://Enemy/Boss1/Attacks/BigLaserAttack/bigLaser.tscn" id="2_dbgtg"]
 [ext_resource type="Texture2D" uid="uid://d1opfhip1y06o" path="res://Hud/Meter/Resources/Glow.png" id="2_fhy5v"]
-[ext_resource type="AudioStream" uid="uid://bdgyx5wxdxmnq" path="res://Enemy/Boss1/Attacks/LaserAttack/LaserResources/lasersound.mp3" id="3_dbgtg"]
+[ext_resource type="AudioStream" uid="uid://dkhwvfppaxovy" path="res://Enemy/Boss1/Attacks/BigLaserAttack/BigLaserResources/lasersound.mp3" id="5_dbgtg"]
 
 [node name="BigLaserAttack" type="Node2D"]
 script = ExtResource("1_fhy5v")
@@ -24,4 +24,5 @@ wait_time = 1.6999999999999995
 one_shot = true
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_dbgtg")
+stream = ExtResource("5_dbgtg")
+volume_db = 1.0
