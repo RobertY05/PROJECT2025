@@ -1,15 +1,15 @@
 extends Area2D
 
-@export var damage := 20.0
+@export var damage := 30.0
 @export var knockback := 15.0
-@export var active_duration := 1.5
+@export var active_duration := 2
 
 @onready var collision_shape = $CollisionShape2D
 @onready var beam_sprite = $Sprite2D
 
 func _ready():
 	beam_sprite.visible = true
-	beam_sprite.scale = Vector2(0.85, 0.85) 
+	beam_sprite.scale = Vector2(1, 1) 
 	collision_shape.disabled = false
 	
 	await get_tree().create_timer(active_duration).timeout

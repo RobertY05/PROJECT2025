@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgibcff21uud8"]
+
+[ext_resource type="Texture2D" uid="uid://bwp17y2dc3vdu" path="res://Enemy/Boss1/Attacks/BigLaserAttack/BigLaserResources/laser.png" id="1_a1ckn"]
+[ext_resource type="Script" uid="uid://7stsrxrn65tq" path="res://Enemy/Boss1/Attacks/BigLaserAttack/bigLaser.gd" id="1_egma8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egma8"]
+size = Vector2(1253.4001, 29.6)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_egma8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(626.69995, 1.0000007)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_egma8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642, 1)
+rotation = 3.1415927
+texture = ExtResource("1_a1ckn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

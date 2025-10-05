@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://6fgfbm4yhgkx"]
+
+[ext_resource type="Script" uid="uid://ceuogklp2vovd" path="res://Enemy/Boss1/Attacks/BigLaserAttack/BigLaserAttack.gd" id="1_fhy5v"]
+[ext_resource type="AudioStream" uid="uid://qmpjshcuqite" path="res://Enemy/Boss1/Attacks/OverwatchAttack/Resources/Charge.mp3" id="1_n8tty"]
+[ext_resource type="PackedScene" uid="uid://dgibcff21uud8" path="res://Enemy/Boss1/Attacks/BigLaserAttack/bigLaser.tscn" id="2_dbgtg"]
+[ext_resource type="Texture2D" uid="uid://d1opfhip1y06o" path="res://Hud/Meter/Resources/Glow.png" id="2_fhy5v"]
+[ext_resource type="AudioStream" uid="uid://bdgyx5wxdxmnq" path="res://Enemy/Boss1/Attacks/LaserAttack/LaserResources/lasersound.mp3" id="3_dbgtg"]
+
+[node name="BigLaserAttack" type="Node2D"]
+script = ExtResource("1_fhy5v")
+laser_scene = ExtResource("2_dbgtg")
+
+[node name="ChargeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_n8tty")
+
+[node name="ChargeGlow" type="Sprite2D" parent="."]
+modulate = Color(0.9685959, 0, 0, 1)
+z_index = 2
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("2_fhy5v")
+
+[node name="ChargeTimer" type="Timer" parent="."]
+wait_time = 1.6999999999999995
+one_shot = true
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dbgtg")
