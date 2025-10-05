@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kuityyblvygu"]
+[gd_scene load_steps=19 format=3 uid="uid://kuityyblvygu"]
 
 [ext_resource type="Script" uid="uid://cj5a1b5as84j" path="res://Enemy/Boss1/Boss1.gd" id="1_lve07"]
 [ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/BurstAttack/BurstAttack.tscn" id="2_lve07"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://b755lsmp4tda5" path="res://Enemy/Boss1/Resources/Tech/Satellite.png" id="8_f34cm"]
 [ext_resource type="Texture2D" uid="uid://bmrakh3wv3goc" path="res://Enemy/Boss1/Resources/Faces/ObamaPreWaterloo.png" id="8_mn8tc"]
 [ext_resource type="Texture2D" uid="uid://cchlauf5gdmg6" path="res://Enemy/Boss1/Resources/WaterlooRingWithCenter.png" id="9_f34cm"]
+[ext_resource type="AudioStream" uid="uid://b8j3yixcim70x" path="res://Enemy/Boss1/Resources/Sounds/ChainGunShot.wav" id="10_4n70l"]
 [ext_resource type="Texture2D" uid="uid://xt8s4h4h2e8i" path="res://Enemy/Boss1/Resources/Weapons/ChainGun.png" id="10_c1ngb"]
+[ext_resource type="Texture2D" uid="uid://dqduiok1skby7" path="res://Character/Gun/Resources/MuzzleFlash2.png" id="11_ethlg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdf6w"]
 size = Vector2(141.98204, 543.4794)
@@ -100,6 +102,11 @@ shape = SubResource("CapsuleShape2D_ljtrn")
 [node name="CenterLimb" type="CharacterBody2D" parent="."]
 script = ExtResource("4_2p64v")
 
+[node name="ChainGunSound" type="AudioStreamPlayer2D" parent="CenterLimb"]
+stream = ExtResource("10_4n70l")
+volume_db = -10.0
+max_polyphony = 25
+
 [node name="ChainGunL" type="Sprite2D" parent="CenterLimb"]
 position = Vector2(-36, 127.00001)
 rotation = -1.4765486
@@ -109,6 +116,18 @@ flip_v = true
 
 [node name="ChainGunLShootPoint" type="Marker2D" parent="CenterLimb/ChainGunL"]
 position = Vector2(-140.62997, -41.110516)
+
+[node name="MuzzleFlashL" type="Sprite2D" parent="CenterLimb/ChainGunL"]
+visible = false
+z_index = 3
+position = Vector2(-240.64812, -59.19108)
+rotation = -3.010693
+scale = Vector2(2.8741424, 3.7027209)
+texture = ExtResource("11_ethlg")
+
+[node name="MuzzleFlashLTimer" type="Timer" parent="CenterLimb/ChainGunL"]
+wait_time = 0.05
+one_shot = true
 
 [node name="ChainGunR" type="Sprite2D" parent="CenterLimb"]
 position = Vector2(42, 129)
@@ -121,6 +140,19 @@ position = Vector2(-141.80276, 37.851807)
 rotation = 0.18985589
 scale = Vector2(0.99492294, 1.006498)
 skew = 0.05265665
+
+[node name="MuzzleFlashR" type="Sprite2D" parent="CenterLimb/ChainGunR"]
+visible = false
+z_index = 3
+position = Vector2(-237.59001, 58.939537)
+rotation = -3.302163
+scale = Vector2(2.8403525, 3.7510679)
+skew = 0.047874928
+texture = ExtResource("11_ethlg")
+
+[node name="MuzzleFlashRTimer" type="Timer" parent="CenterLimb/ChainGunR"]
+wait_time = 0.05
+one_shot = true
 
 [node name="WaterlooRingFilled" type="Sprite2D" parent="CenterLimb"]
 position = Vector2(5, 1)
@@ -140,3 +172,6 @@ texture = ExtResource("5_2j3c3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CenterLimb"]
 position = Vector2(4, 1)
 shape = SubResource("CircleShape2D_epr5s")
+
+[connection signal="timeout" from="CenterLimb/ChainGunL/MuzzleFlashLTimer" to="." method="hide_muzzle_flash_l"]
+[connection signal="timeout" from="CenterLimb/ChainGunR/MuzzleFlashRTimer" to="." method="hide_muzzle_flash_r"]

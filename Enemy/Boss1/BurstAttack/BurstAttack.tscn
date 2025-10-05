@@ -7,8 +7,13 @@
 script = ExtResource("1_4cjln")
 vaccine = ExtResource("2_2n5l6")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="TimerL" type="Timer" parent="."]
+wait_time = 0.05
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="shoot"]
+[node name="TimerR" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="TimerL" to="." method="shoot_l"]
+[connection signal="timeout" from="TimerR" to="." method="shoot_r"]

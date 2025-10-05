@@ -4,20 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://dfm8q072djtey" path="res://Enemy/Boss1/BurstAttack/Vaccine.png" id="2_flhg6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wmy01"]
-radius = 4.0
-height = 118.0
+radius = 2.9999998
+height = 60.0
 
 [node name="Vaccine" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_wmy01")
 
 [node name="Vaccine" type="Sprite2D" parent="."]
-position = Vector2(-2.9100735, 0.83091545)
+position = Vector2(1.9999924, 2.3841858e-07)
 rotation = 0.7504916
-scale = Vector2(0.16957293, 0.16481656)
+scale = Vector2(0.08642631, 0.08189493)
 texture = ExtResource("2_flhg6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wmy01")
 

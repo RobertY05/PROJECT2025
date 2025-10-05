@@ -86,6 +86,7 @@ parameters/looping = true
 
 [node name="AlarmSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_f2i4a")
+volume_db = -10.0
 
 [connection signal="timeout" from="MessageOnTimer" to="." method="show_message"]
 [connection signal="timeout" from="MessageOffTimer" to="." method="hide_message"]

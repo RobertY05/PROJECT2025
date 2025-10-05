@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var bar = $TextureProgressBar
-@onready var label = $Label
 
 var dead = false
 var fade_speed = 0.05

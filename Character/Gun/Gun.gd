@@ -1,9 +1,9 @@
 extends Node2D
 
-@export var magazine_size := 20
-@export var fire_delay := 0.2
+@export var magazine_size := 25
+@export var fire_delay := 0.15
 @export var reload_time := 1.0
-@export var damage := 10.0
+@export var damage := 5.0
 @export var knockback := 50.0
 @export var bloom := 3.0
 
