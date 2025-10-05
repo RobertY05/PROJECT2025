@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0dvwtmtm7hol"]
 
-[ext_resource type="Script" uid="uid://ccy8fumsap28u" path="res://Enemy/Boss1/OverwatchAttack/OverwatchAttack.gd" id="1_2wjhh"]
+[ext_resource type="Script" uid="uid://ccy8fumsap28u" path="res://Enemy/Boss1/Attacks/OverwatchAttack/OverwatchAttack.gd" id="1_2wjhh"]
 [ext_resource type="Texture2D" uid="uid://d1opfhip1y06o" path="res://Hud/Meter/Resources/Glow.png" id="2_2nfue"]
-[ext_resource type="PackedScene" uid="uid://o2j53mv07rmn" path="res://Enemy/Boss1/OverwatchAttack/AdvertProjectile.tscn" id="2_88p67"]
-[ext_resource type="AudioStream" uid="uid://qmpjshcuqite" path="res://Enemy/Boss1/OverwatchAttack/Resources/Charge.mp3" id="3_kgrlj"]
-[ext_resource type="AudioStream" uid="uid://dxjnh0yfr0vd6" path="res://Enemy/Boss1/OverwatchAttack/Resources/SatelliteShot.wav" id="4_88p67"]
+[ext_resource type="PackedScene" uid="uid://o2j53mv07rmn" path="res://Enemy/Boss1/Attacks/OverwatchAttack/AdvertProjectile.tscn" id="2_88p67"]
+[ext_resource type="AudioStream" uid="uid://qmpjshcuqite" path="res://Enemy/Boss1/Attacks/OverwatchAttack/Resources/Charge.mp3" id="3_kgrlj"]
+[ext_resource type="AudioStream" uid="uid://dxjnh0yfr0vd6" path="res://Enemy/Boss1/Attacks/OverwatchAttack/Resources/SatelliteShot.wav" id="4_88p67"]
 
 [node name="OverwatchAttack" type="Node2D"]
 script = ExtResource("1_2wjhh")

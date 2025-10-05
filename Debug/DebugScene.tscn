@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7qvxo0lu8cjv" path="res://Debug/DebugScene.gd" id="1_4u8ob"]
 [ext_resource type="PackedScene" uid="uid://4if2sla1iub8" path="res://Character/Character.tscn" id="2_onjvy"]
-[ext_resource type="PackedScene" uid="uid://c0dvwtmtm7hol" path="res://Enemy/Boss1/OverwatchAttack/OverwatchAttack.tscn" id="3_6mx0e"]
+[ext_resource type="PackedScene" uid="uid://c0dvwtmtm7hol" path="res://Enemy/Boss1/Attacks/OverwatchAttack/OverwatchAttack.tscn" id="3_6mx0e"]
 [ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/Attacks/BurstAttack/BurstAttack.tscn" id="3_dnt51"]
 [ext_resource type="PackedScene" uid="uid://kuityyblvygu" path="res://Enemy/Boss1/Boss1.tscn" id="3_onjvy"]
 [ext_resource type="PackedScene" uid="uid://b2ocif4m1s2jh" path="res://Hud/Meter/Meter.tscn" id="7_6mx0e"]
@@ -23,7 +23,7 @@ script = ExtResource("1_4u8ob")
 
 [node name="Enemy" parent="." instance=ExtResource("3_onjvy")]
 position = Vector2(0, -306)
-attacks = Array[PackedScene]([ExtResource("3_6mx0e"), ExtResource("3_dnt51")])
+attacks = Array[PackedScene]([ExtResource("3_dnt51"), ExtResource("3_6mx0e")])
 health = 1000.0
 
 [node name="Character" parent="." instance=ExtResource("2_onjvy")]
