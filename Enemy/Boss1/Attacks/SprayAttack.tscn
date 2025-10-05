@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dsa7rm42se1vb"]
+
+[node name="SprayAttack" type="Node2D"]

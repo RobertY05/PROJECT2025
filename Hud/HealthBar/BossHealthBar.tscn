@@ -18,3 +18,4 @@ step = 0.01
 value = 20.0
 texture_under = ExtResource("2_a1365")
 texture_progress = ExtResource("3_8ovd1")
+tint_under = Color(0.33406317, 0.33406317, 0.33406317, 1)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://077sxjbt4qlw"]
+
+[ext_resource type="Script" uid="uid://cuaccbkac8pw3" path="res://Enemy/Boss1/Attacks/UAVAttack/Bomb.gd" id="1_jfquc"]
+[ext_resource type="Texture2D" uid="uid://dmsfh42yl6mok" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Crosshair.png" id="2_jf513"]
+[ext_resource type="Texture2D" uid="uid://cw8k4mu7do4cb" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Explosion.png" id="3_jf513"]
+[ext_resource type="AudioStream" uid="uid://dmsww6ylvjsb8" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Explosion.wav" id="4_0etxq"]
+[ext_resource type="Texture2D" uid="uid://dv4hnlvw1hbm7" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Cloud1.png" id="4_lxo2d"]
+[ext_resource type="Texture2D" uid="uid://du7kmdd8rqfdl" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Cloud2.png" id="5_qtu7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfquc"]
+size = Vector2(72, 84)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0etxq"]
+radius = 69.02
+height = 205.39
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtu7e"]
+radius = 62.07
+
+[node name="Bomb" type="Area2D"]
+script = ExtResource("1_jfquc")
+
+[node name="Crosshair" type="Sprite2D" parent="."]
+z_index = 3
+scale = Vector2(0.5743243, 0.5743243)
+texture = ExtResource("2_jf513")
+
+[node name="Box" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jfquc")
+
+[node name="Cloud1" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.12941177, 1, 0.5058824, 1)
+z_index = 3
+position = Vector2(-6, -18)
+scale = Vector2(1.5793415, 1.6046101)
+texture = ExtResource("4_lxo2d")
+
+[node name="Cloud2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.12941177, 1, 0.5058824, 1)
+z_index = 3
+position = Vector2(-6, -18)
+scale = Vector2(1.5793415, 1.6046101)
+texture = ExtResource("5_qtu7e")
+
+[node name="GasCloud" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GasCloud"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0etxq")
+
+[node name="PoisonTickTimer" type="Timer" parent="GasCloud"]
+wait_time = 0.25
+
+[node name="PoisonFadeTimer" type="Timer" parent="GasCloud"]
+wait_time = 10.0
+one_shot = true
+
+[node name="CloudIdleTimer" type="Timer" parent="GasCloud"]
+wait_time = 5.0
+autostart = true
+
+[node name="Explosion" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(3, -58.999996)
+scale = Vector2(0.44140628, 0.53222656)
+texture = ExtResource("3_jf513")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0etxq")
+
+[node name="ExplosionLingerTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ExplosionShape" type="ShapeCast2D" parent="."]
+visible = false
+enabled = false
+shape = SubResource("CircleShape2D_qtu7e")
+target_position = Vector2(0, 0)
+
+[connection signal="body_entered" from="GasCloud" to="." method="_on_gas_cloud_body_entered"]
+[connection signal="body_exited" from="GasCloud" to="." method="_on_gas_cloud_body_exited"]
+[connection signal="timeout" from="GasCloud/PoisonTickTimer" to="." method="do_poison"]
+[connection signal="timeout" from="GasCloud/PoisonFadeTimer" to="." method="end_cloud"]
