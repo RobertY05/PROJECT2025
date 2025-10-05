@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://0kr26riookyu"]
+
+[ext_resource type="Script" uid="uid://cvmldyxpayld3" path="res://Enemy/Boss1/Attacks/LaserAttack/laser.gd" id="1_j85d1"]
+[ext_resource type="Texture2D" uid="uid://dlgcd57fqtns0" path="res://Enemy/Boss1/Attacks/LaserAttack/LaserResources/laser.png" id="2_tg45u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of68g"]
+size = Vector2(631, 20)
+
+[node name="laser" type="Area2D"]
+rotation = 3.1415927
+script = ExtResource("1_j85d1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-525, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tg45u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-525, 0)
+shape = SubResource("RectangleShape2D_of68g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
