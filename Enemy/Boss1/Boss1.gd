@@ -6,7 +6,8 @@ extends Boss
 var ring_spin_speed = 0.1
 
 @onready var radar_limb = $RadarLimb
-@onready var radar = $RadarLimb/RadarDish
+@onready var radar_dish = $RadarLimb/RadarDish
+var radar_look_offset = 120
 var radar_offset = Vector2(-5, 20)
 var radar_original_position : Vector2
 
@@ -41,6 +42,13 @@ func shoot_chain_gun_r():
 
 func hide_muzzle_flash_r():
 	muzzle_flash_r.hide()
+
+func radar_look_at(point : Vector2):
+	radar_dish.look_at(point)
+	radar_dish.rotation += deg_to_rad(radar_look_offset)
+
+func radar_add_rotation(rot : float):
+	radar_dish.rotation += rot
 
 func _ready():
 	radar_original_position = radar_limb.position

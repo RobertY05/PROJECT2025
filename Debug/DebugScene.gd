@@ -17,4 +17,4 @@ func _process(_delta : float):
 	if Input.is_action_just_pressed("x"):
 		boss.shoot_chain_gun_l()
 	if Input.is_action_just_pressed("c"):
-		boss.radar.look_at(GameManager.player.global_position)
+		boss.radar_look_at(GameManager.player.global_position)
