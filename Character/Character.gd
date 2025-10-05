@@ -8,7 +8,7 @@ extends Actor
 @export var max_poison := 130.0
 @export var poison_threshold := 100
 @export var poison_clear_per_tick := 3
-@export var poison_damage_per_tick := 5
+@export var poison_damage_per_tick := 3
 
 @export var dash_ghost : PackedScene
 @export var death_explosion : PackedScene
@@ -69,6 +69,7 @@ func _physics_process(_delta : float):
 	if Input.is_action_just_pressed("dash") and dash_timer.is_stopped():
 		velocity += acceleration * dash_speed
 		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 		dash_invulnerability_timer.start()
 		dash_ghost_timer.start()
 		dash_timer.start()
@@ -93,6 +94,7 @@ func hurt(amount : float, force : Vector2 = Vector2.ZERO) -> void:
 	hurt_sprite.modulate.a = 1.0
 	invulnerability_timer.start()
 	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 	hurt_sound.play()
 	if health <= 0:
 		die()
@@ -104,6 +106,7 @@ func die():
 	hide()
 	get_tree().get_root().add_child(explosion)
 	set_collision_layer_value(1, false)
+	set_collision_mask_value(1, false)
 	poison = 0
 	death_sound.play()
 	invulnerability_timer.stop()
@@ -121,6 +124,7 @@ func revive():
 
 func end_invulnerability():
 	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
 
 func bounce():
 	character_sprite.scale.y = original_scale.y * 0.8
@@ -129,6 +133,7 @@ func bounce():
 func end_dash():
 	dash_ghost_timer.stop()
 	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
 
 func make_ghost():
 	var new_ghost = dash_ghost.instantiate()

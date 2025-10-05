@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cly3pmvx7owdn"]
+
+[ext_resource type="Script" uid="uid://b7cxtqn7ltxw" path="res://Enemy/Boss1/Attacks/MissileAttack/MissileAttack.gd" id="1_lvnxf"]
+[ext_resource type="PackedScene" uid="uid://c3lulywul4epa" path="res://Enemy/Boss1/Attacks/MissileAttack/Missile.tscn" id="2_yivg7"]
+[ext_resource type="AudioStream" uid="uid://cfd3lufcpx8m0" path="res://Enemy/Boss1/Attacks/MissileAttack/Resources/Launch.wav" id="3_ifq31"]
+
+[node name="MissileAttack" type="Node2D"]
+script = ExtResource("1_lvnxf")
+missile_scene = ExtResource("2_yivg7")
+
+[node name="LaunchSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ifq31")
+max_polyphony = 20

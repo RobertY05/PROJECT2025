@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bls2ipbl3hkmt"]
+
+[ext_resource type="Script" uid="uid://600pi6vv7giu" path="res://Enemy/Boss1/Attacks/UAVAttack/UAVAttack.gd" id="1_reu2o"]
+[ext_resource type="AudioStream" uid="uid://dwtaaj6hk4xrn" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/LockOn.wav" id="2_31dkr"]
+[ext_resource type="PackedScene" uid="uid://077sxjbt4qlw" path="res://Enemy/Boss1/Attacks/UAVAttack/Bomb.tscn" id="2_hw7gl"]
+[ext_resource type="AudioStream" uid="uid://cr34wcg88k7al" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/Flyby.wav" id="3_hw7gl"]
+[ext_resource type="Texture2D" uid="uid://c1g4iml3yluuc" path="res://Enemy/Boss1/Attacks/UAVAttack/Resources/UAV.png" id="5_nvswa"]
+
+[node name="UavAttack" type="Node2D"]
+script = ExtResource("1_reu2o")
+bomb_scene = ExtResource("2_hw7gl")
+
+[node name="LockOnSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_31dkr")
+
+[node name="FlybySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hw7gl")
+
+[node name="UAV" type="Sprite2D" parent="."]
+texture = ExtResource("5_nvswa")
+
+[node name="FlybyTimer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
+
+[connection signal="finished" from="LockOnSound" to="." method="lockon"]
+[connection signal="finished" from="FlybySound" to="." method="done"]

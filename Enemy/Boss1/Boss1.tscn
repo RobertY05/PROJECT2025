@@ -75,6 +75,8 @@ shape = SubResource("RectangleShape2D_vdf6w")
 
 [node name="SatelliteLimb" type="CharacterBody2D" parent="."]
 scale = Vector2(0.99999994, 1)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_2p64v")
 
 [node name="5gTower" type="Sprite2D" parent="SatelliteLimb"]
@@ -102,6 +104,8 @@ rotation = 0.1605703
 shape = SubResource("CapsuleShape2D_ljtrn")
 
 [node name="CenterLimb" type="CharacterBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_2p64v")
 
 [node name="ChainGunSound" type="AudioStreamPlayer2D" parent="CenterLimb"]

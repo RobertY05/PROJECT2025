@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci2ouk7enugdc"]
+
+[ext_resource type="Script" uid="uid://cathgfj722647" path="res://Enemy/Boss1/Attacks/SprayAttack/SprayAttack.gd" id="1_hjeb1"]
+[ext_resource type="PackedScene" uid="uid://kspf2ci1ftuo" path="res://Enemy/Boss1/Attacks/BurstAttack/Vaccine.tscn" id="2_rtm0a"]
+
+[node name="SprayAttack" type="Node2D"]
+script = ExtResource("1_hjeb1")
+vaccine = ExtResource("2_rtm0a")
