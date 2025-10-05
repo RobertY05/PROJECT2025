@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://buvl2wdwluoml"]
+
+[ext_resource type="Script" uid="uid://bbat1a14hojlm" path="res://Enemy/Boss1/Attacks/BombAttack/BombAttack.gd" id="1_t7m36"]
+[ext_resource type="PackedScene" uid="uid://cuponxypr7ooi" path="res://Enemy/Boss1/Attacks/BombAttack/Labubu.tscn" id="2_p7bah"]
+
+[node name="BombAttack" type="Node2D"]
+script = ExtResource("1_t7m36")
+Labubu = ExtResource("2_p7bah")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2

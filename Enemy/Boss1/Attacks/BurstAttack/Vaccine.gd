@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var damage := 10.0
+@export var damage := 1
 @export var speed := 10
 @export var knockback := 10
+@export var poison := 15
 
 var velocity : Vector2
 
@@ -18,4 +19,5 @@ func _on_body_entered(body):
 func handle_actor(actor : Actor):
 	if actor.friendly:
 		actor.hurt(damage, velocity.normalized() * knockback)
+		actor.apply_poison(poison)
 		queue_free()

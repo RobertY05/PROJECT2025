@@ -1,20 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://crvaer54kl5kv"]
+[gd_scene load_steps=11 format=3 uid="uid://crvaer54kl5kv"]
 
 [ext_resource type="Script" uid="uid://7qvxo0lu8cjv" path="res://Debug/DebugScene.gd" id="1_4u8ob"]
 [ext_resource type="PackedScene" uid="uid://4if2sla1iub8" path="res://Character/Character.tscn" id="2_onjvy"]
-[ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/BurstAttack/BurstAttack.tscn" id="3_dnt51"]
+[ext_resource type="PackedScene" uid="uid://c0dvwtmtm7hol" path="res://Enemy/Boss1/OverwatchAttack/OverwatchAttack.tscn" id="3_6mx0e"]
+[ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/Attacks/BurstAttack/BurstAttack.tscn" id="3_dnt51"]
 [ext_resource type="PackedScene" uid="uid://kuityyblvygu" path="res://Enemy/Boss1/Boss1.tscn" id="3_onjvy"]
-[ext_resource type="PackedScene" uid="uid://buvl2wdwluoml" path="res://Enemy/Boss1/BombAttack/BombAttack.tscn" id="4_ehrph"]
-[ext_resource type="PackedScene" uid="uid://byhdy4rfxj74" path="res://Debug/PoisonCircle.tscn" id="6_ehrph"]
 [ext_resource type="PackedScene" uid="uid://b2ocif4m1s2jh" path="res://Hud/Meter/Meter.tscn" id="7_6mx0e"]
 [ext_resource type="PackedScene" uid="uid://dn6s7io78vgok" path="res://Hud/HealthBar/PlayerHealthBar.tscn" id="8_4jmw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jmw6"]
+size = Vector2(1724.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83s11"]
+size = Vector2(49, 911.5)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4jmw6"]
+radius = 181.0
+height = 750.333
 
 [node name="DebugScene" type="Node2D"]
 script = ExtResource("1_4u8ob")
 
 [node name="Enemy" parent="." instance=ExtResource("3_onjvy")]
 position = Vector2(0, -306)
-attacks = Array[PackedScene]([ExtResource("3_dnt51"), ExtResource("4_ehrph")])
+attacks = Array[PackedScene]([ExtResource("3_6mx0e"), ExtResource("3_dnt51")])
 health = 1000.0
 
 [node name="Character" parent="." instance=ExtResource("2_onjvy")]
@@ -24,10 +33,50 @@ health = 10.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Meter" parent="." instance=ExtResource("7_6mx0e")]
-position = Vector2(801, 448)
+position = Vector2(802, 452)
 
 [node name="HealthBar" parent="." instance=ExtResource("8_4jmw6")]
 position = Vector2(-160, 87)
 
-[node name="PoisonCircle" parent="." instance=ExtResource("6_ehrph")]
-position = Vector2(-284, 183)
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D"]
+position = Vector2(11.75, 460)
+shape = SubResource("RectangleShape2D_4jmw6")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D2"]
+position = Vector2(-17, -463)
+shape = SubResource("RectangleShape2D_4jmw6")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D3"]
+position = Vector2(824.5, 1.25)
+shape = SubResource("RectangleShape2D_83s11")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D4"]
+position = Vector2(-826, 0)
+shape = SubResource("RectangleShape2D_83s11")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Node2D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/StaticBody2D5"]
+position = Vector2(9, -273)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_4jmw6")

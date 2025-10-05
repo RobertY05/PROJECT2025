@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://kt5r2j82wgoq"]
 
-[ext_resource type="Script" uid="uid://4s1go8ctlqa0" path="res://Enemy/Boss1/BoomerangAttack/boomerang.gd" id="1_lv2b3"]
-[ext_resource type="Texture2D" uid="uid://dyloi2ebulo48" path="res://Enemy/Boss1/BoomerangAttack/worm.png" id="2_bowba"]
+[ext_resource type="Script" uid="uid://4s1go8ctlqa0" path="res://Enemy/Boss1/Attacks/BoomerangAttack/boomerang.gd" id="1_lv2b3"]
+[ext_resource type="Texture2D" uid="uid://dyloi2ebulo48" path="res://Enemy/Boss1/Attacks/BoomerangAttack/worm.png" id="2_bowba"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tmqi"]
 radius = 65.0

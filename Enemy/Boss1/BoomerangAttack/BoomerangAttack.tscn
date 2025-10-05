@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0vrytc1qf7t4"]
-
-[ext_resource type="Script" uid="uid://bmurgls7j33n3" path="res://Enemy/Boss1/BoomerangAttack/BoomerangAttack.gd" id="1_a44fy"]
-[ext_resource type="PackedScene" uid="uid://kt5r2j82wgoq" path="res://Enemy/Boss1/BoomerangAttack/boomerang.tscn" id="2_4p8r3"]
-
-[node name="BoomerangAttack" type="Node2D"]
-script = ExtResource("1_a44fy")
-boomerangScene = ExtResource("2_4p8r3")

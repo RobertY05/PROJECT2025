@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://kuityyblvygu"]
+[gd_scene load_steps=20 format=3 uid="uid://kuityyblvygu"]
 
 [ext_resource type="Script" uid="uid://cj5a1b5as84j" path="res://Enemy/Boss1/Boss1.gd" id="1_lve07"]
-[ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/BurstAttack/BurstAttack.tscn" id="2_lve07"]
+[ext_resource type="PackedScene" uid="uid://xean0vwduva5" path="res://Enemy/Boss1/Attacks/BurstAttack/BurstAttack.tscn" id="2_lve07"]
 [ext_resource type="PackedScene" uid="uid://cbfeo46v8vpdl" path="res://Hud/HealthBar/BossHealthBar.tscn" id="2_spptf"]
 [ext_resource type="Texture2D" uid="uid://w74alko4ocf" path="res://Enemy/Boss1/Resources/Tech/MonitorCrown.png" id="4_2j3c3"]
 [ext_resource type="Script" uid="uid://dya88ymu6246j" path="res://Enemy/BossLimb.gd" id="4_2p64v"]
+[ext_resource type="PackedScene" path="res://Enemy/Boss1/OverwatchAttack/OverwatchAttack.tscn" id="4_rd8ye"]
 [ext_resource type="Texture2D" uid="uid://0ik0upwt67ww" path="res://Enemy/Boss1/Resources/WaterlooRing.png" id="5_2j3c3"]
 [ext_resource type="Texture2D" uid="uid://cxnx5kxxshpaa" path="res://Enemy/Boss1/Resources/Tech/RadarArm.png" id="6_6puut"]
 [ext_resource type="Texture2D" uid="uid://c1oj2jol0lopq" path="res://Enemy/Boss1/Resources/Tech/RadarHead.png" id="7_c1ngb"]
@@ -31,7 +32,7 @@ z_index = 1
 motion_mode = 1
 script = ExtResource("1_lve07")
 healthbar = ExtResource("2_spptf")
-attacks = Array[PackedScene]([ExtResource("2_lve07")])
+attacks = Array[PackedScene]([ExtResource("2_lve07"), ExtResource("4_rd8ye")])
 
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 2.0

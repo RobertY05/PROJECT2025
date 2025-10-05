@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyloi2ebulo48"
-path="res://.godot/imported/worm.png-5665696f3422716b5fa77891594e5e49.ctex"
+uid="uid://c0gii0u8wm82x"
+path="res://.godot/imported/warningsign.jpg-0409aea7e77065fe99921a62eb99be48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemy/Boss1/BoomerangAttack/worm.png"
-dest_files=["res://.godot/imported/worm.png-5665696f3422716b5fa77891594e5e49.ctex"]
+source_file="res://Enemy/Boss1/Attacks/BombAttack/warningsign.jpg"
+dest_files=["res://.godot/imported/warningsign.jpg-0409aea7e77065fe99921a62eb99be48.ctex"]
 
 [params]
 

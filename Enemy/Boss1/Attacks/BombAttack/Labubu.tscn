@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuponxypr7ooi"]
 
-[ext_resource type="Script" uid="uid://dfva82hiuu46f" path="res://Enemy/Boss1/BombAttack/labubu.gd" id="1_mcxw2"]
-[ext_resource type="Texture2D" uid="uid://ognp50tyv5us" path="res://Enemy/Boss1/BoomerangAttack/labubu_PNG.png" id="2_2odq2"]
-[ext_resource type="Texture2D" uid="uid://c0gii0u8wm82x" path="res://Enemy/Boss1/BombAttack/warningsign.jpg" id="3_2odq2"]
+[ext_resource type="Script" uid="uid://dfva82hiuu46f" path="res://Enemy/Boss1/Attacks/BombAttack/labubu.gd" id="1_mcxw2"]
+[ext_resource type="Texture2D" uid="uid://cc41d33iy6njh" path="res://Enemy/Boss1/Attacks/BombAttack/labubu_PNG.png" id="2_2odq2"]
+[ext_resource type="Texture2D" uid="uid://c0gii0u8wm82x" path="res://Enemy/Boss1/Attacks/BombAttack/warningsign.jpg" id="3_2odq2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u6oll"]
 radius = 42.0
